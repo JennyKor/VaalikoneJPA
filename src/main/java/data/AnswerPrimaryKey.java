@@ -14,11 +14,9 @@ public class AnswerPrimaryKey implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id
 	@Column(name = "kysymys_id")
 	private int kysymys_id;
 	
-	@Id
 	@Column(name = "ehdokas_id")
 	private int ehdokas_id;
 	
