@@ -17,10 +17,20 @@ public class Question implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "KYSYMYS_ID")
 	private int kysymys_id;
 	private String kysymys;
+	
+	public Question(String kysymys_id, String kysymys) {
+		setKysymys_id(kysymys_id);
+		this.kysymys = kysymys;
+	}
+	
+	public Question(int kysymys_id, String kysymys) {
+		this.kysymys_id = kysymys_id;
+		this.kysymys = kysymys;
+	}
 	
 	public Question() {
 		
