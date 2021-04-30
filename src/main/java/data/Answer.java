@@ -11,56 +11,96 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "Answer")
-@NamedQuery(name="Answer.findAll", query="SELECT a FROM Answer a")
+@NamedQueries({
+	@NamedQuery(name = "Answer.findAll", query = "SELECT a FROM Answer a"),
+	@NamedQuery(name = "Answer.findByAnswer", query = "SELECT a FROM Answer a WHERE a.answer = :answer"),
+	@NamedQuery(name = "Answer.findByEhdokasId", query = "SELECT a FROM Answer a WHERE a.answerPrimaryKey.ehdokas_id = :ehdokas_id"),
+	@NamedQuery(name = "Answer.findByKysymysId", query = "SELECT a FROM Answer a WHERE a.answerPrimaryKey.kysymys_id = :kysymys_id")
+})
 public class Answer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private AnswerPrimaryKey id;
+	protected AnswerPrimaryKey answerPrimaryKey;
 	
-	private int kysymys_id;
-	private int ehdokas_id;
-	private String kommentti;
+	@Column(name = "VASTAUS")
 	private int vastaus;
 	
-	public AnswerPrimaryKey getId() {
-		return this.id;
+	@Column(name = "KOMMENTTI")
+	private String kommentti;
+	
+	public Answer() {
+		
+	}
+
+	/**
+	 * 
+	 * @param ehdokas_id
+	 * @param kysymys_id
+	 */
+	public Answer(int ehdokas_id, int kysymys_id) {
+		this.answerPrimaryKey = new AnswerPrimaryKey(ehdokas_id, kysymys_id);
 	}
 	
-	public void setId(AnswerPrimaryKey id) {
-		this.id = id;
+	/**
+	 * 
+	 * @return
+	 */
+	public AnswerPrimaryKey getAnswerPrimaryKey() {
+		return answerPrimaryKey;
 	}
 	
-	public int getKysymys_id() {
-		return kysymys_id;
+	/**
+	 * 
+	 * @param answerPrimaryKey
+	 */
+	public void setAnswerPrimaryKey(AnswerPrimaryKey answerPrimaryKey) {
+		this.answerPrimaryKey = answerPrimaryKey;
 	}
 
-	public void setKysymys_id(int kysymys_id) {
-		this.kysymys_id = kysymys_id;
-	}
-
-	public int getEhdokas_id() {
-		return ehdokas_id;
-	}
-
-	public void setEhdokas_id(int ehdokas_id) {
-		this.ehdokas_id = ehdokas_id;
-	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public String getKommentti() {
 		return kommentti;
 	}
 	
+	/**
+	 * 
+	 * @param kommentti
+	 */
 	public void setKommentti(String kommentti) {
 		this.kommentti = kommentti;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getVastaus() {
 		return vastaus;
 	}
 	
+	/**
+	 * 
+	 * @param vastaus
+	 */
 	public void setVastaus(int vastaus) {
 		this.vastaus = vastaus;
+	}
+	
+	public boolean equals(Object object) {
+		if (!(object instanceof Answer)) {
+			return false;
+		}
+		
+		Answer secondObj = (Answer) object;
+		return !((this.answerPrimaryKey == null && secondObj.answerPrimaryKey != null) || (this.answerPrimaryKey != null && !this.answerPrimaryKey.equals(secondObj.answerPrimaryKey)));
+	}
+	
+	public String toString() {
+		return "persist.Answer[answerPrimaryKey = " + answerPrimaryKey + "]";
 	}
 }
