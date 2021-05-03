@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import data.Answer;
 import data.Candidate;
+import data.CandidatesAnswers;
 import data.Question;
 
 /**
@@ -14,11 +15,22 @@ import data.Question;
  *
  */
 public class Dao {
+	
+	public static int countQuestions;
 
 	public static List<Question> findAllQuestions() {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("VaalikoneJPA");
 		EntityManager em = emf.createEntityManager();
 		List<Question> list = em.createQuery("SELECT q FROM Question q").getResultList();
+		
+		countQuestions = list.size();
+		return list;
+	}
+	
+	public static List<Question> findById(int kysymys_id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("VaalikoneJPA");
+		EntityManager em = emf.createEntityManager();
+		List<Question> list = em.createQuery("Question.findQuestionById").setParameter("kysymys_id", kysymys_id).getResultList();
 		return list;
 	}
 	
@@ -29,10 +41,10 @@ public class Dao {
 		return list;
 	}
 
-	public static List<Answer> findAllAnswers(int ehdokas_id) {
+	public static List<CandidatesAnswers> findAllAnswers(int ehdokas_id) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("VaalikoneJPA");
 		EntityManager em = emf.createEntityManager();
-		List<Answer> list = em.createQuery("Answer.findByEhdokasId").setParameter("ehdokas_id", ehdokas_id).getResultList();
+		List<CandidatesAnswers> list = em.createQuery("SELECT a FROM Answer a WHERE a.answerPrimaryKey.ehdokas_id = :ehdokas_id").setParameter("ehdokas_id", ehdokas_id).getResultList();
 		return list;
 	}
 }

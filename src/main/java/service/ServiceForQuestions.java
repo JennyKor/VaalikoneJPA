@@ -14,7 +14,7 @@ public class ServiceForQuestions {
 	@GET
 	@Path("/getall")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Question> getAll() {
+	public static List<Question> getAll() {
 		return Dao.findAllQuestions();
 	}
 	

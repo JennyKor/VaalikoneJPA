@@ -1,7 +1,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.*" %>
-<%@page import="data.Question" %>
-<%@page import="app.GetQuestionsToVoter" %>
+<%@page import="data.Candidate" %>
+<%@page import="app.Machine" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -24,10 +24,20 @@
     	
 		<div class="px-4 py-5 m-auto text-center">
 			<h1>Best candidates based on your answers:</h1>
-			<c:forEach var="candidate" items="${requestScope.candidate}">
-				${candidate.etunimi} ${candidate.sukunimi}<br>
-			</c:forEach>
-		
+			<div class="px-4 py-5 m-auto">
+				<c:forEach var="calcPoints" items="${requestScope.calcPoints}">
+					<div class="row w-50 mx-auto mt-4 bg-light shadow rounded border py-3">
+						<div class="col-7 text-center">
+							<h3 class="py-2">${calcPoints.firstName} ${calcPoints.lastName}</h3>
+							<%-- ${calcPoints.puolue} --%>
+						</div>
+						<div class="col-4 text-center">
+							<a href="" class="btn btn-custom" role="button">Read more</a>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+			<%= request.getAttribute("userAnswerList") %> <%-- for testing --%>
 		</div>
 	</div>
     
