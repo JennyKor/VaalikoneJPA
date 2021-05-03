@@ -1,6 +1,7 @@
 package data;
 
 import java.io.Serializable;
+import java.util.logging.Logger;
 
 import javax.persistence.*;
 
@@ -13,13 +14,15 @@ import javax.persistence.*;
 @Table(name = "Answer")
 @NamedQueries({
 	@NamedQuery(name = "Answer.findAll", query = "SELECT a FROM Answer a"),
-	@NamedQuery(name = "Answer.findByAnswer", query = "SELECT a FROM Answer a WHERE a.answer = :answer"),
+	@NamedQuery(name = "Answer.findByAnswer", query = "SELECT a FROM Answer a WHERE a.vastaus = :vastaus"),
 	@NamedQuery(name = "Answer.findByEhdokasId", query = "SELECT a FROM Answer a WHERE a.answerPrimaryKey.ehdokas_id = :ehdokas_id"),
 	@NamedQuery(name = "Answer.findByKysymysId", query = "SELECT a FROM Answer a WHERE a.answerPrimaryKey.kysymys_id = :kysymys_id")
 })
 public class Answer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	private static final Logger LOG = Logger.getLogger(Answer.class.getName());
 
 	@EmbeddedId
 	protected AnswerPrimaryKey answerPrimaryKey;

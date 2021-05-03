@@ -2,7 +2,13 @@ package data;
 
 import java.io.Serializable;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
 
 /**
  * 
@@ -11,29 +17,39 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "Question")
-@NamedQuery(name="Question.findAll", query="SELECT q FROM Question q")
+@NamedQueries ({
+	@NamedQuery(name = "Question.findAll", query = "SELECT q FROM Question q"),
+	@NamedQuery(name = "Question.findQuestionById", query = "SELECT q FROM Question q WHERE q.kysymys_id = :kysymys_id")
+})
 public class Question implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "KYSYMYS_ID")
 	private int kysymys_id;
 	private String kysymys;
+	
+	public Question() {
+		
+	}
 	
 	public Question(String kysymys_id, String kysymys) {
 		setKysymys_id(kysymys_id);
 		this.kysymys = kysymys;
 	}
 	
+	public Question(String kysymys_id) {
+		setKysymys_id(kysymys_id);
+	}
+	
+	public Question(int kysymys_id) {
+		this.kysymys_id = kysymys_id;
+	}
+	
 	public Question(int kysymys_id, String kysymys) {
 		this.kysymys_id = kysymys_id;
 		this.kysymys = kysymys;
-	}
-	
-	public Question() {
-		
 	}
 
 	public int getKysymys_id() {

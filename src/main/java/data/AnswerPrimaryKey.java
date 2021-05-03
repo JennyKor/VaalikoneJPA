@@ -1,6 +1,7 @@
 package data;
 
 import java.io.Serializable;
+import java.util.logging.Logger;
 
 import javax.persistence.*;
 
@@ -13,6 +14,8 @@ import javax.persistence.*;
 public class AnswerPrimaryKey implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	private static final Logger LOG = Logger.getLogger(AnswerPrimaryKey.class.getName());
 	
 	@Column(name = "KYSYMYS_ID")
 	private int kysymys_id;
