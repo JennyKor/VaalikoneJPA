@@ -28,8 +28,8 @@
 					 <label for="floatingPassword">Password</label>
 						</div>
 					<div class="d-grid gap-2 py-2">	
-					<%=error%>
 					<input type="submit" class="btn btn-custom" value="login">
+					<%=error%>
 					</div>
 				</form>
 			</div>

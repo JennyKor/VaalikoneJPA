@@ -41,7 +41,7 @@ public class CandFilter implements Filter{
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpSession session = ((HttpServletRequest)request).getSession(true);
-		User user = (User) session.getAttribute("candidate");
+		User user = (User) session.getAttribute("user");
 		if (user == null) {
 			((HttpServletResponse) response).sendRedirect("/candidate_login.jsp");
 		}

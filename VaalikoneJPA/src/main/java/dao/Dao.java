@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import data.Candidate;
 import data.User;
 
 public class Dao {
@@ -29,12 +30,24 @@ public class Dao {
 						.setParameter("password", password)
 						.getSingleResult();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 		}finally {
 		
 		return user;
 		}
+	}
+	
+	public static Candidate findCandidate(int id) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("VaalikoneJPA");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Candidate candidate = null;
+		candidate = em.createQuery("SELECT c FROM Candidate c WHERE c.user_id = :id", Candidate.class)
+				.setParameter("id", id)
+				.getSingleResult();
+		return candidate;
+		
 	}
 
 }
