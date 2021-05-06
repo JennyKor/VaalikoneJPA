@@ -38,6 +38,13 @@ public class Dao {
 		}
 	}
 	
+	/**
+	 * Similar to findUser. Uses the User table's id as a foreign key
+	 * to find a matching result from Candidate table. Returns a Candidate
+	 * class object.
+	 * @param id
+	 * @return candidate
+	 */
 	public static Candidate findCandidate(int id) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("VaalikoneJPA");
 		EntityManager em = emf.createEntityManager();

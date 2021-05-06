@@ -65,7 +65,5 @@ public class CandidateLogin extends HttpServlet{
 		}
 
 	}
-	
 
-	
 }
