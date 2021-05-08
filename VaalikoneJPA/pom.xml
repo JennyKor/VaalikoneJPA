@@ -120,7 +120,7 @@
 
 <!-- 
 If using Java 11 or newer add next two.
-These are moved to servlet api and not any more in Java SE API 
+These are moved to servlet api and not any more in Java SE API  
  -->
 <dependency>
     <groupId>javax.xml.bind</groupId>

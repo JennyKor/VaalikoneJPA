@@ -15,23 +15,27 @@
 <body>
 	<div class="container w-75">
 		<header></header>
-		<div class="card m-auto w-25 py-5 shadow p-3 mb-5 bg-body rounded">
+		<div class="card m-auto w-50 py-5 shadow p-3 mb-5 bg-body rounded">
 			<div class="card-body">
-				<h2>Candidate Login</h2>
-				<form action="/login" method="post">
-				<div class="form-floating mb-2">
-					<input type="text" class="form-control" id="floatingInput" name="username"> 
-					<label for="floatingInput">Username</label> 
+				<h1 class="text-center">Candidate Login</h1>
+				<p class="text-center">Log in to fill in your information and answer the election machine questions:</p>
+				<div class="w-50 m-auto">
+					<form action="/login" method="post">
+					<div class="form-floating mb-2">
+						<input type="text" class="form-control" id="floatingInput" name="username"> 
+						<label for="floatingInput">Username</label> 
 					</div>
 					<div class="form-floating">
-					 <input type="password" class="form-control" id ="floatingPassword" name="password">
-					 <label for="floatingPassword">Password</label>
-						</div>
-					<div class="d-grid gap-2 py-2">	
-					<input type="submit" class="btn btn-custom" value="login">
-					<%=error%>
+						<input type="password" class="form-control" id ="floatingPassword" name="password">
+					 	<label for="floatingPassword">Password</label>
 					</div>
+					<div class="d-grid gap-2 py-2">	
+						<input type="submit" class="btn btn-custom" value="login">
+					</div>
+					<%=error%>
 				</form>
+				<p class="text-center">Or go back to <a href="/index.jsp">front page.</a></p>
+				</div>
 			</div>
 		</div>
 	</div>

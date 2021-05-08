@@ -11,7 +11,7 @@ public class Dao {
 	
 	/**
 	 * Retrieves user info from database matching given parameters,
-	 * stores it in an object and returns it. If there is nothing
+	 * stores it in a User class object and returns it. If there is nothing
 	 * in the database matching given parameters, returns an empty
 	 * object anyway.
 	 * @param name
