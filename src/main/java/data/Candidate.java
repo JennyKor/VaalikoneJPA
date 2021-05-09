@@ -7,6 +7,7 @@ import javax.persistence.*;
 /**
  * 
  * Persistence class for the candidates
+ * @author Kirsi, Jenny
  *
  */
 @Entity
@@ -32,6 +33,28 @@ public class Candidate implements Serializable {
 	
 	public Candidate() {
 		
+	}
+	
+	public Candidate(int ehdokas_id, String etunimi, String sukunimi, int ika, String puolue, String kotipaikkakunta,
+					String ammatti) {
+		this.ehdokas_id = ehdokas_id;
+		this.etunimi = etunimi;
+		this.sukunimi = sukunimi;
+		this.ika = ika;
+		this.puolue = puolue;
+		this.kotipaikkakunta = kotipaikkakunta;
+		this.ammatti = ammatti;
+	}
+	
+	public Candidate(String ehdokas_id, String etunimi, String sukunimi, String ika, String puolue, String kotipaikkakunta,
+					String ammatti) {
+		setEhdokas_id(ehdokas_id);
+		this.etunimi = etunimi;
+		this.sukunimi = sukunimi;
+		setIka(ika);
+		this.puolue = puolue;
+		this.kotipaikkakunta = kotipaikkakunta;
+		this.ammatti = ammatti;
 	}
 	
 	public int getEhdokas_id() {

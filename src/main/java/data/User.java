@@ -24,12 +24,42 @@ public class User implements Serializable {
 	private String password;
 	private String role;
 	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+	
+	public User(String id, String username, String password) {
+		setId(id);
+		this.username = username;
+		this.password = password;
+	}
+	
+	public User(int id, String username, String password) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+	}
+
 	public int getId() {
 		return id;
 	}
 	
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public void setId(String id) {
+		try {
+			this.id = Integer.parseInt(id);
+		}
+		catch(NumberFormatException | NullPointerException e){
+			
+		}
 	}
 	
 	public String getUsername() {

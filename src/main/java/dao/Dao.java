@@ -1,50 +1,60 @@
 package dao;
 
-import java.util.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
-import javax.persistence.*;
-
-import data.Answer;
 import data.Candidate;
-import data.CandidatesAnswers;
-import data.Question;
+import data.User;
 
-/**
- * 
- * Tänne kaikki daohommat eli kysymysten, ehdokkaiden, vastauksien ym haut
- *
- */
 public class Dao {
 	
-	public static int countQuestions;
-
-	public static List<Question> findAllQuestions() {
+	/**
+	 * Retrieves user info from database matching given parameters,
+	 * stores it in a User class object and returns it. If there is nothing
+	 * in the database matching given parameters, returns an empty
+	 * object anyway.
+	 * @param name
+	 * @param password
+	 * @return user
+	 */
+	@SuppressWarnings("finally")
+	public static User findUser(String name, String password){
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("VaalikoneJPA");
 		EntityManager em = emf.createEntityManager();
-		List<Question> list = em.createQuery("SELECT q FROM Question q").getResultList();
+		em.getTransaction().begin();
+		User user = null;
+		try {
+			user = em.createQuery("SELECT u FROM User u WHERE u.username = :name AND u.password = :password", User.class)
+						.setParameter("name", name)
+						.setParameter("password", password)
+						.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally {
 		
-		countQuestions = list.size();
-		return list;
+		return user;
+		}
 	}
 	
-	public static List<Question> findById(int kysymys_id) {
+	/**
+	 * Similar to findUser. Uses the User table's id as a foreign key
+	 * to find a matching result from Candidate table. Returns a Candidate
+	 * class object.
+	 * @param id
+	 * @return candidate
+	 */
+	public static Candidate findCandidate(int id) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("VaalikoneJPA");
 		EntityManager em = emf.createEntityManager();
-		List<Question> list = em.createQuery("Question.findQuestionById").setParameter("kysymys_id", kysymys_id).getResultList();
-		return list;
-	}
-	
-	public static List<Candidate> findAllCandidates() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("VaalikoneJPA");
-		EntityManager em = emf.createEntityManager();
-		List<Candidate> list = em.createQuery("SELECT c FROM Candidate c").getResultList();
-		return list;
+		em.getTransaction().begin();
+		Candidate candidate = null;
+		candidate = em.createQuery("SELECT c FROM Candidate c WHERE c.user_id = :id", Candidate.class)
+				.setParameter("id", id)
+				.getSingleResult();
+		return candidate;
+		
 	}
 
-	public static List<CandidatesAnswers> findAllAnswers(int ehdokas_id) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("VaalikoneJPA");
-		EntityManager em = emf.createEntityManager();
-		List<CandidatesAnswers> list = em.createQuery("SELECT a FROM Answer a WHERE a.answerPrimaryKey.ehdokas_id = :ehdokas_id").setParameter("ehdokas_id", ehdokas_id).getResultList();
-		return list;
-	}
 }
