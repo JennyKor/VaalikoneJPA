@@ -23,7 +23,8 @@ import data.Question;
 import dao.Dao;
 
 /**
- * Class finds the questions to the form
+ * Get questions to the user form and
+ * shows more information about best candidates
  * @author Kirsi
  *
  */

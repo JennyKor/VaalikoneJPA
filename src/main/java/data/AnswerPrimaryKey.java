@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 /**
  * 
  * Primary keys "kysymys_id" and "ehdokas_id"
+ * Connected with Candidate and Answer classes
  *
  */
 @Embeddable

@@ -14,6 +14,11 @@ import javax.ws.rs.core.Context;
 import dao.Dao;
 import data.Candidate;
 
+/**
+ * Gets candidates to user view
+ * @author Kirsi
+ *
+ */
 @Path("/candidates")
 public class Candidates {
 	@Context HttpServletRequest request;

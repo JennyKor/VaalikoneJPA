@@ -17,9 +17,8 @@
 
 		<div class="m-auto">
 		   
-		    
 		    <p class="text-center">You can choose an answer from the scale depending on how strongly you agree or disagree.</p>
-		    <p class="text-center">When you have answered all claims, press Submit to see the candidates recommended to you.</p>
+		    <p class="text-center">When you have answered all claims, press Submit to see the candidates recommended to you. You can always go back to the answering page and change your answers.</p>
 		    
 		    <p class="text-center"><a href="/rest/candidates/all" class="btn btn-custom" role="button">Browse candidates</a></p>
 		    <p class="text-center"><a href="/rest/machine/questions" class="btn btn-custom" role="button">Start</a></p>

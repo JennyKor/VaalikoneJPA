@@ -21,6 +21,12 @@ import data.CalcPoints;
 import data.Candidate;
 import data.Question;
 
+/**
+ * Gets user's and all the candidates answers and compares them, then
+ * prints best candidates based on answers
+ * @author Kirsi
+ *
+ */
 @WebServlet(urlPatterns = {"/results"})
 public class MachineServlet extends HttpServlet {
 
@@ -43,9 +49,9 @@ public class MachineServlet extends HttpServlet {
 		for (Question q : questionList) {
 			Answer answer = new Answer();
 			String vastaus = request.getParameter("" + q.getKysymys_id());
-//			if (vastaus == null) {
-//				vastaus = "0";
-//			}
+			if (vastaus == null) {
+				vastaus = "0";
+			}
 			answer.setKysymys_id(q.getKysymys_id());
 			answer.setVastaus(Integer.parseInt(vastaus));
 			userAnswerList.add(answer);

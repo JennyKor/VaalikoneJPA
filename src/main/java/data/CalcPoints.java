@@ -1,5 +1,10 @@
 package data;
 
+/**
+ * Gets points from MachineServlet and sets candidates information ready
+ * @author Kirsi
+ *
+ */
 public class CalcPoints implements Comparable<CalcPoints> {
 	private int ehdokas_id;
 	private int points;

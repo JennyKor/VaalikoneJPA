@@ -67,14 +67,6 @@ public class Answer implements Serializable {
 	public void setKysymys_id(int kysymys_id) {
 		this.kysymys_id = kysymys_id;
 	}
-	
-//	public AnswerPrimaryKey getId() {
-//		return this.id;
-//	}
-//	
-//	public void setId(AnswerPrimaryKey id) {
-//		this.id = id;
-//	}
 
 	public String getKommentti() {
 		return kommentti;
@@ -91,13 +83,4 @@ public class Answer implements Serializable {
 	public void setVastaus(int vastaus) {
 		this.vastaus = vastaus;
 	}
-
-//	public void setVastaus(String vastaus) {
-//		this.vastaus = Integer.parseInt(vastaus);
-//	}
-
-	public void setQuestion(String kysymys) {
-		this.question = question;
-	}
-	
 }

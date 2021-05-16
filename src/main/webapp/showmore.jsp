@@ -14,7 +14,7 @@
 	<div class="container w-75">
 		<header></header>
 		<div class="px-4 py-5 m-auto">
-			<h1 class="text-center">Details</h1>
+			<h1 class="text-center">Candidate's details</h1>
 			
 			<p class="text-center py-4">
 				<a href="/rest/machine/questions" class="btn btn-custom" role="button">Answer questions</a>

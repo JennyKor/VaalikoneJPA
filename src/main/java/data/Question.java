@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 /**
  * 
  * Persistence class for the questions
+ * Connects with Answer class
  *
  */
 @Entity

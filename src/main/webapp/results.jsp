@@ -28,7 +28,6 @@
 					<div class="row w-50 mx-auto mt-4 bg-light shadow rounded border py-3">
 						<div class="col-7 text-center">
 							<h3 class="py-2">${calcPoints.firstName} ${calcPoints.lastName}</h3>
-							<%-- ${calcPoints.puolue} --%>
 						</div>
 						<div class="col-4 text-center my-2">
 							<a href="/rest/machine/showmore/${calcPoints.ehdokas_id}" class="btn btn-custom" role="button">Read more</a>
@@ -36,7 +35,6 @@
 					</div>
 				</c:forEach>
 			</div>
-			<%-- <%= request.getAttribute("userAnswerList") %> for testing --%>
 		</div>
 	</div>
     

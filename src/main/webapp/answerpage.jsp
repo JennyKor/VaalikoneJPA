@@ -42,7 +42,7 @@
 						</div>
 					</div>
 				</c:forEach>
-				<p class="text-center p-2"><small>1 = Completely disagree, 2 = Slightly disagree, 3 = Neutral, 4 = Slightly agree, 5 = Completely agree</small></p>
+				<p class="text-center p-2">1 = Completely disagree, 2 = Slightly disagree, 3 = Neutral, 4 = Slightly agree, 5 = Completely agree</p>
 				<input type="submit" role="button" class="btn btn-custom" value="Save">
 			</form>
 		</div>

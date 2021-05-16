@@ -24,7 +24,7 @@
 		<div class="px-4 py-5 m-auto">
 
 			<h1 class="text-center">Browse all candidates</h1>
-			
+			<p class="text-center py-4">Here you can browse all candidates and may be find your favorite before answering.</p>
 			<p class="text-center py-4">
 				<a href="/rest/machine/questions" class="btn btn-custom" role="button">Answer questions</a>
 			</p>

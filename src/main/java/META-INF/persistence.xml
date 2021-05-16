@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	
-	<!-- All the tables from database connected to persistence classes -->
+	<!-- All the tables from database connected to persistence classes and ready to use -->
 	<persistence-unit name="VaalikoneJPA">
 	<class>data.User</class>
 	<class>data.Candidate</class>
