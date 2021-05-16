@@ -24,25 +24,26 @@
     	
 		<div class="px-4 py-5 m-auto text-center">
 		<h1>Answer the questions</h1>
-			<form action="/rest/answer/results" method="post">
+			<form action="/results" method="post">
 				<c:forEach var="question" items="${requestScope.question}">
-					<h3>${question.kysymys_id} / 19</h3>
-					<div class="w-75 p-3 mb-2 shadow bg-light text-dark rounded-pill text-center hs-5 m-auto">
-						${question.kysymys}
-						<div class="text-center p-2">
-							<%String[] option = {"1", "2", "3", "4", "5"};
-							for (int i = 0; i < option.length; i++) { %>
-							<div class="form-check form-check-inline">
-								<input type="hidden" name="kysymys_id" value="${question.kysymys_id}">
-								<input class="form-check-input" type="radio" name="${question.kysymys_id}" id="${question.kysymys_id}_<%=option[i]%>" value="<%=option[i]%>">
-								<label class="form-check-label" for="${question.kysymys_id}_<%=option[i]%>"><%=option[i]%></label>
+					<div class="p-3">
+						<h3>${question.kysymys_id} / 19</h3>
+						<div class="w-75 p-3 mb-2 shadow bg-light text-dark rounded-pill text-center hs-5 m-auto">
+							${question.kysymys}
+							<div class="text-center p-2">
+								<%String[] option = {"1", "2", "3", "4", "5"};
+								for (int i = 0; i < option.length; i++) { %>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="${question.kysymys_id}" id="${question.kysymys_id}_<%=option[i]%>" value="<%=option[i]%>">
+									<label class="form-check-label" for="${question.kysymys_id}_<%=option[i]%>"><%=option[i]%></label>
+								</div>
+								<% } %>
 							</div>
-							<% } %>
 						</div>
 					</div>
-					<p class="text-center p-2"><small>1 = Completely disagree, 2 = Slightly disagree, 3 = Neutral, 4 = Slightly agree, 5 = Completely agree</small></p>
 				</c:forEach>
-				<input type="submit" role="button" class="btn btn-custom" value="Save answers">
+				<p class="text-center p-2"><small>1 = Completely disagree, 2 = Slightly disagree, 3 = Neutral, 4 = Slightly agree, 5 = Completely agree</small></p>
+				<input type="submit" role="button" class="btn btn-custom" value="Save">
 			</form>
 		</div>
 	</div>

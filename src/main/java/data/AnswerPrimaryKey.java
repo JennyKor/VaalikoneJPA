@@ -1,70 +1,42 @@
 package data;
 
 import java.io.Serializable;
-import java.util.logging.Logger;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * 
- * Primary keys
+ * Primary keys "kysymys_id" and "ehdokas_id"
  *
  */
 @Embeddable
 public class AnswerPrimaryKey implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	private static final Logger LOG = Logger.getLogger(AnswerPrimaryKey.class.getName());
-	
-	@Column(name = "KYSYMYS_ID")
+
+	@Column(name = "KYSYMYS_ID", insertable = false, updatable = false)
 	private int kysymys_id;
-	
-	@Column(name = "EHDOKAS_ID")
+
+	@Column(name = "EHDOKAS_ID", insertable = false, updatable = false)
 	private int ehdokas_id;
 	
 	public AnswerPrimaryKey() {
 		
 	}
 	
-	/**
-	 * 
-	 * @param ehdokas_id
-	 * @param kysymys_id
-	 */
-	public AnswerPrimaryKey(int ehdokas_id, int kysymys_id) {
-		this.kysymys_id = kysymys_id;
-		this.ehdokas_id = ehdokas_id;
-	}
-	
-	/**
-	 * 
-	 * @param ehdokas_id
-	 */
 	public void setEhdokas_id(int ehdokas_id) {
 		this.ehdokas_id = ehdokas_id;
 	}
-	
-	/**
-	 * 
-	 * @return
-	 */
+
 	public int getEhdokas_id() {
 		return this.ehdokas_id;
 	}
-	
-	/**
-	 * 
-	 * @param kysymys_id
-	 */
+
 	public void setKysymys_id(int kysymys_id) {
 		this.kysymys_id = kysymys_id;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
 	public int getKysymys_id() {
 		return this.kysymys_id;
 	}
@@ -85,5 +57,14 @@ public class AnswerPrimaryKey implements Serializable {
 	
 	public String toString() {
 		return "persist.AnswerPrimaryKey[ehdokas_id = " + ehdokas_id + ", kysymys_id = " + kysymys_id + "]";
+	}
+	
+	public int hashCode() {
+		final int prime = 31;
+		int hash = 17;
+		hash = hash * prime + this.ehdokas_id;
+		hash = hash * prime + this.kysymys_id;
+		
+		return hash;
 	}
 }

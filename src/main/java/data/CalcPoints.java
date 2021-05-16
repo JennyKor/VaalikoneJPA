@@ -5,14 +5,18 @@ public class CalcPoints implements Comparable<CalcPoints> {
 	private int points;
 	private String firstName;
 	private String lastName;
+	private String party;
 	
 	public CalcPoints() {
 		
 	}
 	
-	public CalcPoints(int ehdokas_id, int points) {
+	public CalcPoints(int ehdokas_id, int points, String firstName, String lastName, String party) {
 		this.ehdokas_id = ehdokas_id;
 		this.points = points;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.party = party;
 	}
 	
 	public String getFirstName() {
@@ -47,6 +51,14 @@ public class CalcPoints implements Comparable<CalcPoints> {
 		this.points = points;
 	}
 	
+	public String getParty() {
+		return party;
+	}
+
+	public void setParty(String party) {
+		this.party = party;
+	}
+
 	public int compareTo(CalcPoints p) {
 		int compare = Integer.compare(points, p.points);
 		return compare;

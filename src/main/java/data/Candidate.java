@@ -1,6 +1,7 @@
 package data;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
  *
  */
 @Entity
+@Cacheable(false)
 @Table(name = "Candidate")
 @NamedQuery(name="Candidate.findAll", query="SELECT c FROM Candidate c")
 public class Candidate implements Serializable {
@@ -20,6 +22,7 @@ public class Candidate implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ehdokas_id")
 	private int ehdokas_id;
+	
 	private String etunimi;
 	private String sukunimi;
 	private String puolue;
@@ -30,8 +33,59 @@ public class Candidate implements Serializable {
 	private String ammatti;
 	private int user_id;
 	
+	@Transient
+	private int points;
+	
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
+	@OneToMany(mappedBy = "candidate")
+	private List<Answer> answer;
+	
 	public Candidate() {
 		
+	}
+	
+	public Candidate(int id, String etunimi, String sukunimi, String puolue, String kpkunta, int ika, String miksi, String mita, String ammatti) {
+		setEhdokas_id(id);
+		this.etunimi = etunimi;
+		this.sukunimi = sukunimi;
+		this.puolue = puolue;
+		this.kotipaikkakunta = kpkunta;
+		setIka(ika);
+		this.miksi_eduskuntaan = miksi;
+		this.mita_asioita_haluat_edistaa = mita;
+		this.ammatti = ammatti;
+	}
+	
+	public Candidate(String etunimi, String sukunimi, String puolue, String kpkunta, int ika, String miksi, String mita, String ammatti) {
+		this.etunimi = etunimi;
+		this.sukunimi = sukunimi;
+		this.puolue = puolue;
+		this.kotipaikkakunta = kpkunta;
+		setIka(ika);
+		this.miksi_eduskuntaan = miksi;
+		this.mita_asioita_haluat_edistaa = mita;
+		this.ammatti = ammatti;
+	}
+	
+	public List<Answer> getAnswer() {
+		return this.answer;
+	}
+	
+	public void setAnswer(List<Answer> answer) {
+		this.answer = answer;
+	}
+	
+	public Answer addAnswer(Answer answer) {
+		getAnswer().add(answer);
+		answer.setCandidate(this);
+		return answer;
 	}
 	
 	public int getEhdokas_id() {

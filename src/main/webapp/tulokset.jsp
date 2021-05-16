@@ -1,7 +1,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.*" %>
 <%@page import="data.Candidate" %>
-<%@page import="app.MachineServlet" %>
+<%@page import="app.Machine" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -18,27 +18,9 @@
   </head>
 
   <body>
-
-    <div class="container w-75">
-    	<header></header>
-		<div class="px-4 py-5 m-auto text-center">
-			<h1>Best candidates based on your answers:</h1>
-			<div class="px-4 py-5 m-auto">
-				<c:forEach var="calcPoints" items="${requestScope.calcPoints}">
-					<div class="row w-50 mx-auto mt-4 bg-light shadow rounded border py-3">
-						<div class="col-7 text-center">
-							<h3 class="py-2">${calcPoints.firstName} ${calcPoints.lastName}</h3>
-							<%-- ${calcPoints.puolue} --%>
-						</div>
-						<div class="col-4 text-center my-2">
-							<a href="/rest/machine/showmore/${calcPoints.ehdokas_id}" class="btn btn-custom" role="button">Read more</a>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
-			<%-- <%= request.getAttribute("userAnswerList") %> for testing --%>
-		</div>
-	</div>
-    
+   	 <div class="container w-50"><%= request.getAttribute("json") %></div>
+<%--     	<c:forEach var="question" items="${requestScope.userAnswerList}">
+	  		${question.kysymys_id} ${question.vastaus}
+	  	</c:forEach> --%>
   </body>
-</html>
+ </html>

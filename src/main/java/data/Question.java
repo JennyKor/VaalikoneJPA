@@ -1,13 +1,10 @@
 package data;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -16,40 +13,45 @@ import javax.persistence.Table;
  *
  */
 @Entity
+@Cacheable(false)
 @Table(name = "Question")
 @NamedQueries ({
-	@NamedQuery(name = "Question.findAll", query = "SELECT q FROM Question q"),
-	@NamedQuery(name = "Question.findQuestionById", query = "SELECT q FROM Question q WHERE q.kysymys_id = :kysymys_id")
+	@NamedQuery(name = "Question.findAll", query = "SELECT q FROM Question q")
 })
 public class Question implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "KYSYMYS_ID")
 	private int kysymys_id;
+	
+	private List<Answer> answer;
+	
 	private String kysymys;
 	
 	public Question() {
 		
 	}
 	
-	public Question(String kysymys_id, String kysymys) {
-		setKysymys_id(kysymys_id);
+	public Question(int id, String kysymys) {
+		setKysymys_id(id);
 		this.kysymys = kysymys;
 	}
 	
-	public Question(String kysymys_id) {
-		setKysymys_id(kysymys_id);
+	public List<Answer> getAnswer() {
+		return this.answer;
 	}
 	
-	public Question(int kysymys_id) {
-		this.kysymys_id = kysymys_id;
+	public void setAnswer(List<Answer> answer) {
+		this.answer = answer;
 	}
 	
-	public Question(int kysymys_id, String kysymys) {
-		this.kysymys_id = kysymys_id;
-		this.kysymys = kysymys;
+	public Answer addAnswer(Answer answer) {
+		getAnswer().add(answer);
+		answer.setQuestion(this);
+		return answer;
 	}
 
 	public int getKysymys_id() {

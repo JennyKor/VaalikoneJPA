@@ -1,7 +1,7 @@
 package data;
 
 import java.io.Serializable;
-import java.util.logging.Logger;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -11,99 +11,93 @@ import javax.persistence.*;
  *
  */
 @Entity
+@Cacheable(false)
 @Table(name = "Answer")
 @NamedQueries({
-	@NamedQuery(name = "Answer.findAll", query = "SELECT a FROM Answer a"),
-	@NamedQuery(name = "Answer.findByAnswer", query = "SELECT a FROM Answer a WHERE a.vastaus = :vastaus"),
-	@NamedQuery(name = "Answer.findByEhdokasId", query = "SELECT a FROM Answer a WHERE a.answerPrimaryKey.ehdokas_id = :ehdokas_id"),
-	@NamedQuery(name = "Answer.findByKysymysId", query = "SELECT a FROM Answer a WHERE a.answerPrimaryKey.kysymys_id = :kysymys_id")
+	@NamedQuery(name = "Answer.findAll", query = "SELECT a FROM Answer a")
 })
 public class Answer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	private static final Logger LOG = Logger.getLogger(Answer.class.getName());
 
 	@EmbeddedId
-	protected AnswerPrimaryKey answerPrimaryKey;
-	
-	@Column(name = "VASTAUS")
+	private AnswerPrimaryKey id;
+
 	private int vastaus;
-	
-	@Column(name = "KOMMENTTI")
 	private String kommentti;
+	
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "EHDOKAS_ID")
+	private Candidate candidate;
+	
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "KYSYMYS_ID", insertable = false, updatable = false)
+	private Question question;
+	
+	private int kysymys_id;
 	
 	public Answer() {
 		
 	}
-
-	/**
-	 * 
-	 * @param ehdokas_id
-	 * @param kysymys_id
-	 */
-	public Answer(int ehdokas_id, int kysymys_id) {
-		this.answerPrimaryKey = new AnswerPrimaryKey(ehdokas_id, kysymys_id);
+	
+	public Candidate getCandidate() {
+		return this.candidate;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	public AnswerPrimaryKey getAnswerPrimaryKey() {
-		return answerPrimaryKey;
+	public void setCandidate(Candidate candidate) {
+		this.candidate = candidate;
 	}
 	
-	/**
-	 * 
-	 * @param answerPrimaryKey
-	 */
-	public void setAnswerPrimaryKey(AnswerPrimaryKey answerPrimaryKey) {
-		this.answerPrimaryKey = answerPrimaryKey;
+	public Question getQuestion() {
+		return this.question;
 	}
+	
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
+	
+	public Answer(int vastaus) {
+		this.vastaus = vastaus;
+	}
+	
+	public int getKysymys_id () {
+		return this.kysymys_id;
+	}
+	
+	public void setKysymys_id(int kysymys_id) {
+		this.kysymys_id = kysymys_id;
+	}
+	
+//	public AnswerPrimaryKey getId() {
+//		return this.id;
+//	}
+//	
+//	public void setId(AnswerPrimaryKey id) {
+//		this.id = id;
+//	}
 
-	/**
-	 * 
-	 * @return
-	 */
 	public String getKommentti() {
 		return kommentti;
 	}
 	
-	/**
-	 * 
-	 * @param kommentti
-	 */
 	public void setKommentti(String kommentti) {
 		this.kommentti = kommentti;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
 	public int getVastaus() {
 		return vastaus;
 	}
 	
-	/**
-	 * 
-	 * @param vastaus
-	 */
 	public void setVastaus(int vastaus) {
 		this.vastaus = vastaus;
 	}
-	
-	public boolean equals(Object object) {
-		if (!(object instanceof Answer)) {
-			return false;
-		}
-		
-		Answer secondObj = (Answer) object;
-		return !((this.answerPrimaryKey == null && secondObj.answerPrimaryKey != null) || (this.answerPrimaryKey != null && !this.answerPrimaryKey.equals(secondObj.answerPrimaryKey)));
+
+//	public void setVastaus(String vastaus) {
+//		this.vastaus = Integer.parseInt(vastaus);
+//	}
+
+	public void setQuestion(String kysymys) {
+		this.question = question;
 	}
 	
-	public String toString() {
-		return "persist.Answer[answerPrimaryKey = " + answerPrimaryKey + "]";
-	}
 }

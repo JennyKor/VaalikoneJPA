@@ -9,6 +9,7 @@
 	<class>data.Candidate</class>
 	<class>data.Question</class>
 	<class>data.Answer</class>
+	<class>data.AnswerPrimaryKey</class>
 		
     <properties>
 	    <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
