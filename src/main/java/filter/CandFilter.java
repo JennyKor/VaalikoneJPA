@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import data.User;
 
 /**
- * Filter class for candidate pages.
+ * Filter class for candidate pages and RESTful services.
  * @author Jenny
  *
  */
@@ -28,7 +28,7 @@ import data.User;
 		DispatcherType.INCLUDE,
 		DispatcherType.ERROR
 		}
-		, urlPatterns = {"/candidate/*"})
+		, urlPatterns = {"/candidate/*", "/rest/candidateservice/*", "/readcandidate", "/updatecandidate"})
 public class CandFilter implements Filter{
 
 	@Override

@@ -1,5 +1,11 @@
 <% String error = "";
-	error = (String) session.getAttribute("error");
+
+	if ((String) session.getAttribute("error") != null){
+		error = (String) session.getAttribute("error");
+	}	
+	else {
+		error = "";
+	}
 %>
 
 <%@ page language="java" contentType="text/html; charset=utf-8"

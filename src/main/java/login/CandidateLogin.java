@@ -53,7 +53,7 @@ public class CandidateLogin extends HttpServlet{
 		
 		if(user == null) {
 			response.sendRedirect("/candidate_login.jsp");
-			String message = "Wrong username or password.";
+			String message = "Check your username or password.";
 			session.setAttribute("error", message);	
 		}	
 		else {
