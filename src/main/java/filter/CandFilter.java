@@ -28,7 +28,7 @@ import data.User;
 		DispatcherType.INCLUDE,
 		DispatcherType.ERROR
 		}
-		, urlPatterns = {"/candidate/index.jsp"})
+		, urlPatterns = {"/candidate/*"})
 public class CandFilter implements Filter{
 
 	@Override

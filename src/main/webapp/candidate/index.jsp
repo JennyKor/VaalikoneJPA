@@ -30,6 +30,7 @@
 <link
 	href="https://kirsiina.github.io/vaalikone_ulkoasu/css/customstyles.css"
 	rel="stylesheet">
+<link href="/style.css" rel="stylesheet">
 <title>Vote Monster - Candidate profile</title>
 </head>
 
@@ -47,16 +48,17 @@
 					<div class="col-7 text-center">
 					<h3><%=name%> <%=lastname %></h3>
 					<p><%=party%><br>
-					<%=age%><br>
 					<%=muncipality%><br>
-					<%=trade%></p>
+					<%=age%>, <%=trade%></p>
 					</div>
-					<img src="..." class="rounded float-left" alt="Candidate photo">
+					<div class="col-4 text-center">
+					<img src="/cand_photos/photo<%=id%>.jpeg" alt="Candidate photo">
+					</div>
 				</div>
 			</div>
 			
 			<p class="text-center">
-				<a href="../readcandidate" class ="btn btn-custom" role="button">Update information</a>
+				<a href="/readcandidate" class ="btn btn-custom" role="button">Update information</a>
 				<a href="/candidate/showquestiontocandidate" class="btn btn-custom" role="button">Answer the questions</a>
 				<a href="/login?logout=yes" class="btn btn-danger" role="button">Logout</a>
 			</p>

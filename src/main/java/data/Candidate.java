@@ -11,6 +11,7 @@ import javax.persistence.*;
  *
  */
 @Entity
+@Cacheable(false)
 @Table(name = "Candidate")
 @NamedQuery(name="Candidate.findAll", query="SELECT c FROM Candidate c")
 public class Candidate implements Serializable {
@@ -35,9 +36,10 @@ public class Candidate implements Serializable {
 		
 	}
 	
-	public Candidate(int ehdokas_id, String etunimi, String sukunimi, int ika, String puolue, String kotipaikkakunta,
+	public Candidate(int ehdokas_id, int user_id, String etunimi, String sukunimi, int ika, String puolue, String kotipaikkakunta,
 					String ammatti) {
 		this.ehdokas_id = ehdokas_id;
+		this.user_id = user_id;
 		this.etunimi = etunimi;
 		this.sukunimi = sukunimi;
 		this.ika = ika;
@@ -46,9 +48,10 @@ public class Candidate implements Serializable {
 		this.ammatti = ammatti;
 	}
 	
-	public Candidate(String ehdokas_id, String etunimi, String sukunimi, String ika, String puolue, String kotipaikkakunta,
+	public Candidate(String ehdokas_id, String user_id, String etunimi, String sukunimi, String ika, String puolue, String kotipaikkakunta,
 					String ammatti) {
 		setEhdokas_id(ehdokas_id);
+		setUser_id(user_id);
 		this.etunimi = etunimi;
 		this.sukunimi = sukunimi;
 		setIka(ika);

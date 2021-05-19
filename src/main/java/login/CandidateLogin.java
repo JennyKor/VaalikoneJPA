@@ -58,7 +58,6 @@ public class CandidateLogin extends HttpServlet{
 		}	
 		else {
 			int id = user.getId();
-			System.out.println(id);
 			Candidate candidate = Dao.findCandidate(id);
 			session.setAttribute("candidate", candidate);
 			session.setAttribute("user", user);

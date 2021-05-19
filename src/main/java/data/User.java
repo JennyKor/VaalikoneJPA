@@ -10,6 +10,7 @@ import javax.persistence.*;
  *
  */
 @Entity
+@Cacheable(false)
 @Table(name = "User")
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable {
