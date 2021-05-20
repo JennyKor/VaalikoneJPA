@@ -1,16 +1,17 @@
 package data;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
 
 /**
  * 
- * Persistence class for the candidates
- * @author Kirsi, Jenny
+ * Persistence class for the candidates information
  *
  */
 @Entity
+@Cacheable(false)
 @Table(name = "Candidate")
 @NamedQuery(name="Candidate.findAll", query="SELECT c FROM Candidate c")
 public class Candidate implements Serializable {
@@ -21,6 +22,7 @@ public class Candidate implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ehdokas_id")
 	private int ehdokas_id;
+	
 	private String etunimi;
 	private String sukunimi;
 	private String puolue;
@@ -31,30 +33,59 @@ public class Candidate implements Serializable {
 	private String ammatti;
 	private int user_id;
 	
+	@Transient
+	private int points;
+	
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
+	@OneToMany(mappedBy = "candidate")
+	private List<Answer> answer;
+	
 	public Candidate() {
 		
 	}
 	
-	public Candidate(int ehdokas_id, String etunimi, String sukunimi, int ika, String puolue, String kotipaikkakunta,
-					String ammatti) {
-		this.ehdokas_id = ehdokas_id;
+	public Candidate(int id, String etunimi, String sukunimi, String puolue, String kpkunta, int ika, String miksi, String mita, String ammatti) {
+		setEhdokas_id(id);
 		this.etunimi = etunimi;
 		this.sukunimi = sukunimi;
-		this.ika = ika;
 		this.puolue = puolue;
-		this.kotipaikkakunta = kotipaikkakunta;
+		this.kotipaikkakunta = kpkunta;
+		setIka(ika);
+		this.miksi_eduskuntaan = miksi;
+		this.mita_asioita_haluat_edistaa = mita;
 		this.ammatti = ammatti;
 	}
 	
-	public Candidate(String ehdokas_id, String etunimi, String sukunimi, String ika, String puolue, String kotipaikkakunta,
-					String ammatti) {
-		setEhdokas_id(ehdokas_id);
+	public Candidate(String etunimi, String sukunimi, String puolue, String kpkunta, int ika, String miksi, String mita, String ammatti) {
 		this.etunimi = etunimi;
 		this.sukunimi = sukunimi;
-		setIka(ika);
 		this.puolue = puolue;
-		this.kotipaikkakunta = kotipaikkakunta;
+		this.kotipaikkakunta = kpkunta;
+		setIka(ika);
+		this.miksi_eduskuntaan = miksi;
+		this.mita_asioita_haluat_edistaa = mita;
 		this.ammatti = ammatti;
+	}
+	
+	public List<Answer> getAnswer() {
+		return this.answer;
+	}
+	
+	public void setAnswer(List<Answer> answer) {
+		this.answer = answer;
+	}
+	
+	public Answer addAnswer(Answer answer) {
+		getAnswer().add(answer);
+		answer.setCandidate(this);
+		return answer;
 	}
 	
 	public int getEhdokas_id() {

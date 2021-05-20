@@ -50,23 +50,29 @@
     </dependency>
 
     <dependency>
-	<groupId>com.google.endpoints</groupId>
-	<artifactId>endpoints-framework</artifactId>
-	<version>2.2.2</version>
+<groupId>com.google.endpoints</groupId>
+<artifactId>endpoints-framework</artifactId>
+<version>2.2.2</version>
 </dependency>
-	<dependency>
-		<groupId>com.google.appengine</groupId>
-		<artifactId>appengine-api-1.0-sdk</artifactId>
-		<version>1.9.88</version>
-	</dependency>
-	<!-- Test Dependencies -->
+<dependency>
+<groupId>com.google.appengine</groupId>
+<artifactId>appengine-api-1.0-sdk</artifactId>
+<version>1.9.88</version>
+</dependency>
+<!-- Test Dependencies -->
 
-	<!-- This dependency is needed for annotations (e.g. @Path, @Consumes, @Produces 
-		etc.) in the REST-class -->
+<!-- This dependency is needed for annotations (e.g. @Path, @Consumes, @Produces etc.) in the REST-class-->
+	<!-- https://mvnrepository.com/artifact/org.json/json -->
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20210307</version>
+</dependency>
+	
 	<dependency>
-		<groupId>org.glassfish.jersey.media</groupId>
-		<artifactId>jersey-media-json-jackson</artifactId>
-		<version>2.27</version>
+	    <groupId>org.glassfish.jersey.media</groupId>
+	    <artifactId>jersey-media-json-jackson</artifactId>
+	    <version>2.27</version>
 	</dependency>
 
 <!-- This is needed that your server can handle REST-class as a servlet.
@@ -120,24 +126,26 @@
 	    <version>2.5.0</version>
 	</dependency>
 
-	<!-- If using Java 11 or newer add next two. These are moved to servlet 
-		api and not any more in Java SE API -->
-	<dependency>
-		<groupId>javax.xml.bind</groupId>
-		<artifactId>jaxb-api</artifactId>
-		<version>2.3.0</version>
-	</dependency>
-	<dependency>
-		<groupId>javax.activation</groupId>
-		<artifactId>activation</artifactId>
-		<version>1.1.1</version>
-	</dependency>
-	<dependency>
-		<groupId>junit</groupId>
-		<artifactId>junit</artifactId>
-		<version>4.12</version>
-		<scope>test</scope>
-	</dependency>
+<!-- 
+If using Java 11 or newer add next two.
+These are moved to servlet api and not any more in Java SE API 
+ -->
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.3.0</version>
+</dependency>
+<dependency>
+    <groupId>javax.activation</groupId>
+    <artifactId>activation</artifactId>
+    <version>1.1.1</version>
+</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
