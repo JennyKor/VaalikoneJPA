@@ -26,7 +26,7 @@
 				<h1 class="text-center">Candidate Login</h1>
 				<p class="text-center">Log in to fill in your information and answer the election machine questions:</p>
 				<div class="w-50 m-auto">
-					<form action="/login" method="post">
+					<form action="/candlogin" method="post">
 					<div class="form-floating mb-2">
 						<input type="text" class="form-control" id="floatingInput" name="username"> 
 						<label for="floatingInput">Username</label> 

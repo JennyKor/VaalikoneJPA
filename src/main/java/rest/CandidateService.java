@@ -29,7 +29,7 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 import data.Candidate;
 
 /**
- * REST-services for candidate pages, excluding
+ * RESTful service for candidate pages, excluding
  * login.
  * @author Jenny
  *
@@ -79,7 +79,7 @@ public class CandidateService {
 			@FormDataParam("id") String photo_id,
 			@Context ServletContext sc) throws Exception {
 		
-		//Renaming profile picture and converting to jpeg.
+		//Renaming profile picture and converting to jpeg:
 		String name = fileMetaData.getFileName();
 		String newname = name.replaceAll(name, "photo" + photo_id + ".jpeg");
 		

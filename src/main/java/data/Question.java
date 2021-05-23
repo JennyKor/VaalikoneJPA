@@ -28,12 +28,16 @@ public class Question implements Serializable {
 	@Column(name = "KYSYMYS_ID")
 	private int kysymys_id;
 	
-	private List<Answer> answer;
-	
 	private String kysymys;
 	
 	public Question() {
 		
+	}
+	
+	//lisätty uusi muodostin, 
+	// /addquestion AdminQuestionissa herjasi t.Jenny
+	public Question(String kysymys) {
+		this.kysymys = kysymys; 
 	}
 	
 	public Question(int id, String kysymys) {
@@ -41,19 +45,6 @@ public class Question implements Serializable {
 		this.kysymys = kysymys;
 	}
 	
-	public List<Answer> getAnswer() {
-		return this.answer;
-	}
-	
-	public void setAnswer(List<Answer> answer) {
-		this.answer = answer;
-	}
-	
-	public Answer addAnswer(Answer answer) {
-		getAnswer().add(answer);
-		answer.setQuestion(this);
-		return answer;
-	}
 
 	public int getKysymys_id() {
 		return kysymys_id;

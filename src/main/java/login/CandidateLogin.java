@@ -17,7 +17,7 @@ import data.User;
  * @author Jenny
  *
  */
-@WebServlet(urlPatterns = {"/login"})
+@WebServlet(urlPatterns = {"/candlogin"})
 public class CandidateLogin extends HttpServlet{
 
 	/**

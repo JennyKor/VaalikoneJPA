@@ -60,7 +60,7 @@
 			<p class="text-center">
 				<a href="/readcandidate" class ="btn btn-custom" role="button">Update information</a>
 				<a href="/candidate/showquestiontocandidate" class="btn btn-custom" role="button">Answer the questions</a>
-				<a href="/login?logout=yes" class="btn btn-danger" role="button">Logout</a>
+				<a href="/candlogin?logout=yes" class="btn btn-danger" role="button">Logout</a>
 			</p>
 
 	</div>
