@@ -12,7 +12,7 @@ import data.User;
 import data.Question;
 
 /**
- * 
+ * Dao-class to retrieve information from database.
  * @author Jenny, Kirsi
  *
  */
@@ -104,8 +104,7 @@ public class Dao {
 		candidate = em.createQuery("SELECT c FROM Candidate c WHERE c.user_id = :id", Candidate.class)
 				.setParameter("id", id)
 				.getSingleResult();
-		return candidate;
-		
+		return candidate;	
 	}
 
 }

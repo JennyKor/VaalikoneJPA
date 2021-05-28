@@ -6,7 +6,8 @@ import javax.persistence.*;
 
 /**
  * 
- * Persistence class for the users
+ * Persistence class for users
+ * @author Kirsi, Jenny
  *
  */
 @Entity

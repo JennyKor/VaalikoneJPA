@@ -4,7 +4,8 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * 
- * Hashes user's password
+ * Hashes user's password. Passed from the previous project.
+ * @author Kirsi
  *
  */
 public class CryptMain {

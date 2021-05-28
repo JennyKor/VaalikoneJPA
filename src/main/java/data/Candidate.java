@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 /**
  * 
- * Persistence class for the candidates
+ * Persistence class for candidates
  * @author Kirsi, Jenny
  *
  */

@@ -34,8 +34,7 @@ public class Question implements Serializable {
 		
 	}
 	
-	//lisätty uusi muodostin, 
-	// /addquestion AdminQuestionissa herjasi t.Jenny
+	
 	public Question(String kysymys) {
 		this.kysymys = kysymys; 
 	}
